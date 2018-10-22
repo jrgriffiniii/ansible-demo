@@ -1,0 +1,10 @@
+# Vagrant related files
+/.vagrant
+*.retry
+# hide keys
+pulsys_rsa_key*
+# images are too large
+# vault merging
+.ansible-vault-password
+# Ignore Vagrant file
+Vagrantfile
