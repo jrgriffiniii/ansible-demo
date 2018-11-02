@@ -1,5 +1,8 @@
 sudo adduser deploy
 sudo visudo # to grant sudo perms
+## add this to sudoers file
+deploy ALL=(ALL) NOPASSWD:ALL
+###
 sudo -s
 su deploy
 ssh-keygen # to create ssh directory with correct perms
