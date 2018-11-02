@@ -25,3 +25,4 @@ sudo apt -y install php7.2 libapache2-mod-php7.2
 wget https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz
 sudo mv wordpress/ /var/www/html/
+sudo apt -y install php7.2-mysql
