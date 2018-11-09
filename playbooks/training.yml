@@ -1,0 +1,66 @@
+---
+- hosts: training2
+  remote_user: pulsys
+  become: yes
+  vars:
+      github_key:
+
+
+  tasks:
+    - name: create a deploy group
+      group:
+        name: deploy
+        state: present
+
+    - name: create a deploy user
+      user:
+        name: deploy
+        ssh_key_file: github_key
+        groups: sudo
+
+    - name: install apache webserver
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: install software properties
+      apt:
+        name: software-properties-common
+        state: present
+
+    - name: add an apt-key for mariadb server
+      apt_key:
+          keyserver: keyserver.ubuntu.com
+          id: 0xF1656F24C74CD1D8
+
+    - name: install mariadb server and client
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+        vars:
+          packages:
+            - mariadb-server
+            - mariadb-client
+
+    - name: add ppa package repo
+      apt_repository:
+        repo: ppa:ondrej/php
+        state: present
+
+    - name: install PHP7.2 software 
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+        vars:
+          packages:
+            - php7.2
+            - libapache2-mod-php7.2
+            - php7.2-mysql
+
+    - name: download and save wordpress tar file
+      get_url:
+        url: https://wordpress.org/latest.tar.gz
+        dest: /var/www/html/wordpress
