@@ -57,12 +57,9 @@
 
     - name: install mariadb server and client
       apt:
-        name: "{{ item }}"
+        name: [ 'mariadb-server', 'mariadb-client' ]
         state: present
         update_cache: yes
-      with_items:
-          - mariadb-server
-          - mariadb-client
 
     - name: add ppa package repo
       apt_repository:
@@ -71,15 +68,12 @@
 
     - name: install PHP7.2 software 
       apt:
-        name: "{{ item }}"
+        name: [ 'php7.2', 'php7.2-mysql', 'libapache2-mod-php7.2', 'php7.2-cli', 'php7.2-cgi', 'php7.2-gd' ]
         state: present
         update_cache: yes
-      with_items:
-          - php7.2
-          - libapache2-mod-php7.2
-          - php7.2-mysql
 
     - name: download and save wordpress tar file
-      get_url:
-        url: https://wordpress.org/latest.tar.gz
-        dest: /var/www/html/wordpress
+      unarchive:
+        src: https://wordpress.org/latest.tar.gz
+        dest: /var/www/html
+        remote_src: yes
