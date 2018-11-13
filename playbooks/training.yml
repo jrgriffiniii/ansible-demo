@@ -43,14 +43,16 @@
       when: add_repository_key is failed
 
     - name: add repo key using the shell
-      shell: "sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8"
+      shell: "apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8"
+      become: yes
       args:
           warn: false
       when: add_repository_key is failed
 
 
     - name: add repo using the shell
-      shell: "sudo add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] https://mirrors.evowise.com/mariadb/repo/10.2/ubuntu {{ ansible_distribution_major_version}} main'"
+      shell: "add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] https://mirrors.evowise.com/mariadb/repo/10.2/ubuntu {{ ansible_lsb.codename }} main'"
+      become: yes
       when: add_repository_key is failed
 
     - name: install mariadb server and client
