@@ -57,13 +57,12 @@
 
     - name: install mariadb server and client
       apt:
-        name: "{{ packages }}"
+        name: "{{ item }}"
         state: present
         update_cache: yes
-        vars:
-          packages:
-            - mariadb-server
-            - mariadb-client
+      with_items:
+          - mariadb-server
+          - mariadb-client
 
     - name: add ppa package repo
       apt_repository:
@@ -72,14 +71,13 @@
 
     - name: install PHP7.2 software 
       apt:
-        name: "{{ packages }}"
+        name: "{{ item }}"
         state: present
         update_cache: yes
-        vars:
-          packages:
-            - php7.2
-            - libapache2-mod-php7.2
-            - php7.2-mysql
+      with_items:
+          - php7.2
+          - libapache2-mod-php7.2
+          - php7.2-mysql
 
     - name: download and save wordpress tar file
       get_url:
