@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: kayiwa/ansibledemo:test1
+      - image: kayiwa/ansibledemo
     working_directory: ~/princeton_ansible
     steps:
       - run:
