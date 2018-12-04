@@ -1,5 +1,5 @@
 ---
-- hosts: circleci
+- hosts: all
   remote_user: pulsys
   become: yes
   vars:
