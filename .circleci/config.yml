@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: phusion/baseimage
+      - image: kayiwa/ansibledemo
     working_directory: ~/princeton_ansible
     steps:
       - run:
@@ -16,4 +16,4 @@ jobs:
           command: apt-get update && apt-get -y install ansible
       - run:
           name: run tests
-          command: date
+          command: ansible-playbook -v
