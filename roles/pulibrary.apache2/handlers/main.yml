@@ -1,2 +1,6 @@
 ---
-# handlers file for pulibrary.apache2
+- name: restart apache
+  service:
+    name: apache2
+    enabled: true
+    state: restarted

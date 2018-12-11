@@ -1,2 +1,24 @@
 ---
-# tasks file for pulibrary.apache2
+- name: ensure required packages are present
+  apt:
+    name: [ 'apache2' ]
+    state: present
+    update_cache: true
+
+- name: install apache modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  notify: restart apache
+  with_items:
+    - rewrite
+    - headers
+    - expires
+    - filter
+    - vhost_alias
+
+- name: modify the default apache site
+  template:
+    src: "vhosts24.conf.j2"
+    dest: "/etc/apache2/sites-available/000-default.conf"
+  notify: restart apache

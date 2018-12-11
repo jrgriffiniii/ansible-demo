@@ -1,2 +1,4 @@
 ---
-# defaults file for pulibrary.apache2
+apache:
+    docroot: "/var/www/html"
+    servername: "{{ ansible_hostname }}"
