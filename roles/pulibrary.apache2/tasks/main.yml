@@ -1,7 +1,7 @@
 ---
 - name: ensure required packages are present
   apt:
-    name: [ 'apache2' ]
+    name: ['apache2']
     state: present
     update_cache: true
 
