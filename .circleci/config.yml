@@ -1,19 +1,19 @@
+---
 version: 2
 jobs:
   build:
     docker:
-      - image: kayiwa/ansibledemo
-    working_directory: ~/princeton_ansible
+      - image: python
     steps:
       - run:
           name: Install software properties
-          command: apt-get update && apt-get -y install software-properties-common
+          command: apt-get -qq update
       - run:
-          name: Install ansible repo
-          command: apt-add-repository ppa:ansible/ansible -y
+          name: Install molecule
+          command: pip install molecule
       - run:
-          name: install ansible
-          command: apt-get update && apt-get -y install ansible
+          name: install docker-py
+          command: pip install docker-py
       - run:
           name: run tests
-          command: ansible-playbook /princeton_ansible/playbooks/training.yml --connection=local
+          command: molecule test
