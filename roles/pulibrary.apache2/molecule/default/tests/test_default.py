@@ -23,3 +23,9 @@ def test_pkg(host, pkg):
     package = host.package(pkg)
 
     assert package.is_installed
+
+
+def test_apache_listening_http(host):
+    socket = host.socket('tcp://127.0.0.1:80')
+
+    assert socket.is_listening
