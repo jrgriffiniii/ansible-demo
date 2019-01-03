@@ -2,8 +2,14 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/ansible_demo
     docker:
       - image: python
+        environment:
+          - ROLE_NAME: pulibrary.apache2
+        matrix:
+          - MOLECULE_DISTRO: ubuntu1804
+          - MOLECULE_DISTRO: ubuntu1604
     steps:
       - run:
           name: Install software properties
@@ -13,7 +19,7 @@ jobs:
           command: pip install molecule
       - run:
           name: install docker-py
-          command: pip install docker-py
+          command: pip install docker
       - run:
           name: run tests
           command: molecule test
