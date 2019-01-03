@@ -8,7 +8,7 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: phusion/baseimage
+    image: kayiwa/princeton_bionic_box:0.0.3
 provisioner:
   name: ansible
   lint:
