@@ -24,7 +24,7 @@ opinionated. Clone this repo.
  * `brew install pyenv`
  * `brew install pyenv-virtualenv`
 
-## Setup you environment
+## Setup your environment
 
 To setup your virtual environment install the current version of Python using
 the following command:
@@ -45,3 +45,18 @@ Activate your environment using the following command
 Then install all the required packages for this repo by running:
 
 `pip install -r requirements.txt`
+
+Molecule will only run under the `roles/pulibrary.apache2` directory, so do the
+following to test:
+
+```
+cd roles/pulibrary.apache2
+molecule test
+```
+
+it defaults to Ubuntu bionic or run:
+
+```
+cd roles/pulibrary.apache2
+MOLECULE_DISTRO=ubuntu1604 molecule test
+```
