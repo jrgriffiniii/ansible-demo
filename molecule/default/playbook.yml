@@ -1,0 +1,6 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    # Specify each pulibrary role here
+    - role: pulibrary.apache2
