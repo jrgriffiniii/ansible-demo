@@ -44,4 +44,4 @@ Activate your environment using the following command
 
 Then install all the required packages for this repo by running:
 
-`pip -r requirements.txt`
+`pip install -r requirements.txt`
