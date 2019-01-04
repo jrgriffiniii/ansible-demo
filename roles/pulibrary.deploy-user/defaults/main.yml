@@ -1,2 +1,5 @@
 ---
-# defaults file for pulibrary.deploy-user
+deploy_user: "{{ generic_app_user | default('deploy') }}"
+deploy_ssh_users: []
+deploy_user_uid: 1002
+deploy_user_shell: "/bin/bash"

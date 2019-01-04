@@ -1,2 +1,5 @@
 ---
-# handlers file for pulibrary.deploy-user
+- name: restart ssh
+  service:
+    name: ssh
+    state: restarted
