@@ -8,11 +8,21 @@ Ansible Demo
 - [x] Create Vagrant and Ansible
 - [x] Testinfra
 - [x] Molecule
-- [ ] CI
+- [x] CI
 
 ## Quick Intro to Ansible
 
-This repo is an introduction to Ansible and CI testing
+This repo is primarily an introduction to Ansible and CI testing with Molecule
+using Testinfra. Most of the lessons learned here will be incorporated into
+[pulibrary/princeton_ansible](https://github.com/pulibrary/princeton_ansible) It
+is left here mostly to allow others interested in applying these locally.
+
+## TDD for Infrastructure code with Molecule
+
+[Molecule](https://molecule.readthedocs.io/en/latest/#) is a TDD framework for
+testing Infrastructure as code using Ansible. In [September of 2018](https://groups.google.com/forum/#!topic/ansible-project/ehrb6AEptzA) Ansible began
+treating the project as a first class citizen which made the decision to use it
+much simpler
 
 ## Prerequisites
 
@@ -60,3 +70,7 @@ it defaults to Ubuntu bionic or run:
 cd roles/pulibrary.apache2
 MOLECULE_DISTRO=ubuntu1604 molecule test
 ```
+
+### TO DO
+
+* Try Vagrant driver (Docker won't always) work
